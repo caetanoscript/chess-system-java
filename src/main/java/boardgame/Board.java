@@ -6,7 +6,7 @@ public class Board {
     private int columns;
     private Piece[][] pieces;
 
-    public Board(int columns, int rows) {
+    public Board(int rows, int columns) {
         if (rows < 1 || columns < 1){
             throw new BoardException("Error creating bord: there must be at least 1 row and 1 column");
         }
@@ -45,6 +45,19 @@ public class Board {
         piece.position = position;
     }
 
+    public Piece removePiece(Position position){
+        if(!positionExists(position)){
+            throw new BoardException("Position not on the board");
+        }
+        if (piece(position) == null){
+            return null;
+        }
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRow()][position.getColumn()] = null;
+        return aux;
+    }
+
     private Boolean positionExists(int row, int column) {
         return row >= 0 && row < rows && column >= 0 && column < columns;
     }
@@ -59,4 +72,19 @@ public class Board {
         }
         return piece(position) != null;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            sb.append((8 - i) + " "); // Número da linha no tabuleiro de xadrez
+            for (int j = 0; j < columns; j++) {
+                sb.append(pieces[i][j] == null ? "- " : pieces[i][j] + " ");
+            }
+            sb.append("\n");
+        }
+        sb.append("  a b c d e f g h\n");
+        return sb.toString();
+    }
+
 }
