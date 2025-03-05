@@ -1,5 +1,6 @@
 package application;
 
+import chess.ChessMath;
 import chess.ChessPosition;
 import chess.ChessPiece;
 
@@ -19,6 +20,12 @@ public class UI {
             throw new InputMismatchException("Eror reading ChessPosition. ");
         }
 
+    }
+    public static void printmatch(ChessMath chessMath){
+        printBoard(chessMath.getpieces());
+        System.out.println();
+        System.out.println("turn: " + chessMath.getTurn());
+        System.out.println("waiting player: " + chessMath.getCurrentPlayer());
     }
 
     public static void printBoard(ChessPiece[][] pieces) {
