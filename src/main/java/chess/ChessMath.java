@@ -97,7 +97,8 @@ public class ChessMath {
 
 
     private Piece makeMove(Position source, Position target) {
-        Piece p = board.removePiece(source);
+        ChessPiece p = (ChessPiece) board.removePiece(target);
+        p.increaseMoveCount();
         if (p == null) {
             throw new IllegalStateException("Tentativa de mover uma peça que não existe na posição: " + source);
         }
@@ -121,7 +122,8 @@ public class ChessMath {
 
 
     private void undoMove(Position source, Position target, Piece capturedPiece) {
-        Piece p = board.removePiece(target);
+        ChessPiece p = (ChessPiece) board.removePiece(target);
+        p.decreaseMoveCount();
         if (p != null) {
             board.placePiece(p, source);
             if (p instanceof King && !piecesOnTheBoard.contains(p)) {
