@@ -29,8 +29,10 @@ public class ChessPosition {
     }
 
 
-
     protected static ChessPosition fromPosition(Position position) {
+        if (position == null) {
+            throw new IllegalArgumentException("Posição não pode ser nula!");
+        }
         return new ChessPosition((char) ('a' + position.getColumn()), 8 - position.getRow());
     }
 

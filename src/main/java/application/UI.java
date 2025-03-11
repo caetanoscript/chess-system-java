@@ -5,8 +5,6 @@ import chess.ChessPosition;
 import chess.ChessPiece;
 import chess.Color;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -27,18 +25,28 @@ public class UI {
         }
 
     }
-    public static void printmatch(ChessMath chessMath, List<ChessPiece> captured){
+    public static void printmatch(ChessMath chessMath, List<ChessPiece> captured) {
         printBoard(chessMath.getpieces());
         System.out.println();
         printCapturedPieces(captured);
         System.out.println(" ");
         System.out.println(" ");
         System.out.println("turn: " + chessMath.getTurn());
-        System.out.println("waiting player: " + chessMath.getCurrentPlayer());
-        if (chessMath.getCheck()){
-            System.out.println("CHECK!");
+
+        if (chessMath.getCheckMate()) {
+
+            System.out.println("waiting player: " + chessMath.getCurrentPlayer());
+            System.out.println("CHEQUEMATE!");
+            System.out.println("WINNER: " + chessMath.getCurrentPlayer());
+        } else {
+
+            if (chessMath.getCheck()) {
+                System.out.println("CHECK!");
+            }
+            System.out.println("waiting player: " + chessMath.getCurrentPlayer());
         }
     }
+
 
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i = 0; i < pieces.length; i ++){

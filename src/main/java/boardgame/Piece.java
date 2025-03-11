@@ -35,4 +35,7 @@ public abstract class Piece {
     }
 
 
+    public void setPosition(Position target) {
+        this.position = target;
+    }
 }

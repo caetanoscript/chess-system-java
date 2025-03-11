@@ -18,7 +18,7 @@ public class Program {
         ChessMath chasmath = new ChessMath();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chasmath.getCheckMate()) {
             try {
                 UI.clearScreen();
                 UI.printmatch(chasmath, captured);
@@ -46,6 +46,8 @@ public class Program {
             System.out.println(e.getMessage());
             sc.nextLine();
         }
+            UI.clearScreen();
+            UI.printmatch(chasmath,captured);
         }
 
 
