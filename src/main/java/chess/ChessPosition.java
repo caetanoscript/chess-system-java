@@ -23,10 +23,12 @@ public class ChessPosition {
     }
 
     public Position toPosition() {
-        int rowIndex = 8 - row;
-        int columnIndex = column - 'a';
-        return new Position(rowIndex, columnIndex);
+        int rowConverted = 8 - row;
+        int columnConverted = column - 'a';
+        return new Position(rowConverted, columnConverted);
     }
+
+
 
 
     protected static ChessPosition fromPosition(Position position) {
