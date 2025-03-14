@@ -41,7 +41,12 @@ public class Program {
                 if (capturedPiece != null){
                     captured.add(capturedPiece);
                 }
+                if(chasmath.getPromote() != null){
+                    System.out.print("enter piece for promoted (B/N/R/Q): ");
+                    String type = sc.nextLine().toUpperCase();
+                    chasmath.replacePromotedPiece(type);
 
+                }
             }
             catch (ChessException | InputMismatchException e){
             System.out.println(e.getMessage());
