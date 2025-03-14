@@ -44,7 +44,12 @@ public class Program {
                 if(chasmath.getPromote() != null){
                     System.out.print("enter piece for promoted (B/N/R/Q): ");
                     String type = sc.nextLine().toUpperCase();
+                    while (!type.equals("B") && !type.equals("N") && !type.equals("R") && !type.equals("Q")){
+                        System.out.print("invalid value! enter piece for promoted (B/N/R/Q): ");
+                         type = sc.nextLine().toUpperCase();
+                    }
                     chasmath.replacePromotedPiece(type);
+
 
                 }
             }
